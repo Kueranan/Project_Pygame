@@ -25,6 +25,10 @@ class SplitWordByLetter:
                 first_letter = word[0].lower()  
                 if first_letter in self.dir_word:
                     self.dir_word[first_letter][index] = (word, translation)
+                else:
+                    return 'Not thing in A-Z'
+            else:
+                return 'word not in row'
         return self.dir_word
 
 
