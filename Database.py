@@ -1,29 +1,41 @@
-# I will keep data form class with type data is dir
+import pandas as pd
+import os
+import json
 
-class Vocabculary:
-    def __init__(self, vocab_type, vocab):
-        self.vocab_type = vocab_type
-        self.vocab = vocab
-        
-        
-    def show_data(self):
-        print(f'vocab_all {self.vocab_type}')
-        print(f'vocab {self.vocab}')
-        
+
+df_1 = pd.read_csv('data_word_thai_eng.csv')
+
+class Word:
+    def __init__(self):
+        self.A_TO_Z = []
     
-    def keep_data(self):
-        vocab = self.vocab
+    def change_number_to_word(self):
+        for i in range(26):
+            self.A_TO_Z.append(chr(97 + i))
+        return self.A_TO_Z
+
+class SplitWordByLetter:
+    def __init__(self, letters):
+        self.letters = letters
+        self.dir_word = {letter: {} for letter in letters}  
+    
+    def add_to_dict(self, words, translations):
+        for index, (word, translation) in enumerate(zip(words, translations)):
+            if isinstance(word, str) and word:  
+                first_letter = word[0].lower()  
+                if first_letter in self.dir_word:
+                    self.dir_word[first_letter][index] = (word, translation)
+        return self.dir_word
 
 
-class Daily_Rotine(Vocabculary):
-    rotine = {'brush my teeth' : 'แปรงฟัน', 
-              'Eat dinner' : 'กินอาหารเย็น'}
-    def __init__(self, vocab_type, vocab):
-        super().__init__(vocab_type, self.rotine)
-        
 
-vocab = Daily_Rotine('vocab' , '2')
-vocab.show_data()
+    
+def sent():
+    word_instance = Word()
+    A_TO_Z = word_instance.change_number_to_word()
+    splitter = SplitWordByLetter(A_TO_Z)
+    result = splitter.add_to_dict(df_1['e-search'], df_1['t-entry'])
+    return result
 
     
         
