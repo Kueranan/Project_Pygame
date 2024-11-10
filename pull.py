@@ -17,11 +17,42 @@ def word_label():
 
 
 word_for_random = word_label()
-Data_all = c.sent()  
+Data_all = DB.sent()  
 
+''' 
+class Pull_Question:
+    def __init__(self):
+        
+    if choose_letter_index in word_for_random:
+        # number in number random
+       letter = word_for_random[choose_letter_index] # e.g., 'c'
+
+    start, end = A_TO_Z_range.get_range(letter)
+    
+    choose_word = random.randint(start, end - 1)
+    
+    if letter in Data_all: # {'a': {0:(word, tran), 1:(word, tran)......}}
+        words_for_letter = Data_all[letter] # 0-4158  number get {0,(word, tran)}
+        
+        if choose_word in words_for_letter: # random same range
+            question = words_for_letter[choose_word][0]
+            answer = words_for_letter[choose_word][1]
+            print("Question:", question)
+            print("Answer:", answer)
+        else:
+            print(f"Fuck you ไม่ต้องทำ")
+    else:
+        print(f"not found word")
+else:
+    print("out range")
+    
+class choice:
+    pass
+'''   
 # Retrieve the chosen letter and word
 if choose_letter_index in word_for_random:      # number in number random
     letter = word_for_random[choose_letter_index] # e.g., 'c'
+    print(letter)
 
     start, end = A_TO_Z_range.get_range(letter)
     
