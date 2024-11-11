@@ -17,21 +17,20 @@ class Word:
 class SplitWordByLetter:
     def __init__(self, letters):
         self.letters = letters
-        self.dir_word = {letter: {} for letter in letters}  # {'a' : {}..... 'z': {}}
+        self.dir_word = {letter: {} for letter in letters}  
     
     def add_to_dict(self, words, translations):
-        for index, (word, translation) in enumerate(zip(words, translations)):
+        for index, (word, translation) in enumerate(zip(words, translations)): # (0,  (word 1 in row, tran 1 in row))
             if isinstance(word, str) and word:  
-                first_letter = word[0].lower()  # check char a-z
+                first_letter = word[0].lower()  
                 if first_letter in self.dir_word:
-                    self.dir_word[first_letter][index] = (word, translation)   #{'a' : {0 : (word, tran)}} 
+                    self.dir_word[first_letter][index] = (word, translation)
                 else:
-                    return 'Not thing in A-Z'
+                    pass
             else:
-                return 'word not in row'
+                pass
+               
         return self.dir_word
-
-
 
     
 def sent():
@@ -40,7 +39,5 @@ def sent():
     splitter = SplitWordByLetter(A_TO_Z)
     result = splitter.add_to_dict(df_1['e-search'], df_1['t-entry'])
     return result
-
-#print(sent())
     
         
