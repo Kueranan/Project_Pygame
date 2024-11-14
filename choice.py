@@ -32,6 +32,13 @@ class build_Qusetion:
     def total_choice(self):
         keep_all_choice = [sent_pull.Qusetion_Answer()[0] for i in range(self.choice)]
         return keep_all_choice
+    
+    
+    
+    
+    
+    
+    
 ''' 
 class create_choice(build_Qusetion):
     sent_pull.Qusetion_Answer()
