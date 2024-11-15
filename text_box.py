@@ -13,7 +13,7 @@ class TextBox():
         self.text_color = text_color
 
         self.rect_surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
-        self.font = pygame.font.SysFont(None, font_size)
+        self.font = pygame.font.Font('k2d/K2D-Bold.ttf', font_size)
         
         self.text_surface = self.font.render(self.text, True, self.text_color)
         self.text_x = (self.width - self.text_surface.get_width()) // 2
