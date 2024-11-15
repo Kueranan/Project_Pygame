@@ -12,8 +12,8 @@ def easy_mode():
     clock = pygame.time.Clock()
     pygame.display.set_caption('Easy mode')
 
-    WIDTH = 600
-    HEIGHT = 600
+    WIDTH = 720
+    HEIGHT = 720
 
     background = pygame.image.load('images/sun.jpeg').convert_alpha()
     background=  pygame.transform.scale(background, (WIDTH, HEIGHT*2//3))
@@ -21,9 +21,9 @@ def easy_mode():
     question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text="Insert Question Here")
 
     font_size = 20
-    choice_size = (200, 60)
-    oChoice_1 = Choice(screen, (WIDTH*1.5//5, HEIGHT*4.125//5), 'images/choice.png', 'images/choice_down.png', font_size, "Insert Choice 1 Here", size = choice_size)
-    oChoice_2 = Choice(screen, (WIDTH*3.5//5, HEIGHT*4.125//5), 'images/choice.png', 'images/choice_down.png', font_size, "Insert Choice 2 Here", size = choice_size)
+    choice_size = (250, 80)
+    oChoice_1 = Choice(screen, (WIDTH*2//7, HEIGHT*4.125//5), 'images/choice.png', 'images/choice_down.png', font_size, "Insert Choice 1 Here", size = choice_size)
+    oChoice_2 = Choice(screen, (WIDTH*5//7, HEIGHT*4.125//5), 'images/choice.png', 'images/choice_down.png', font_size, "Insert Choice 2 Here", size = choice_size)
 
     # Game loop
     run = True
