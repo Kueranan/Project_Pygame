@@ -1,6 +1,6 @@
 import random
 import Database 
-import Range_word_a_z
+import A_TO_Z_range
 #choose_letter_index = random.randint(1, 26)  
 #choose_word = random.randint(0, 4158)        
 
@@ -23,7 +23,7 @@ def generate_question(word_for_random, Data_all):
 
         if choose_letter_index in word_for_random:
             letter = word_for_random[choose_letter_index]  # e.g., 'c'
-            start, end = Range_word_a_z.get_range(letter)
+            start, end = A_TO_Z_range.get_range(letter)
             
             choose_word = random.randint(start, end - 1)
             
