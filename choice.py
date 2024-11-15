@@ -13,7 +13,7 @@ class Choice:
 
         self.image = self.image_up
         self.rect = self.image.get_rect(center = pos)
-        self.font = pygame.font.SysFont(None, font_size)
+        self.font = pygame.font.Font('k2d/K2D-Light.ttf', font_size)
         self.text = self.font.render(text, True, (0, 0, 0))
         self.texttile = self.text.get_rect(center=self.rect.center)
         self.clicked = False
