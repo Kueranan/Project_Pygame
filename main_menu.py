@@ -13,8 +13,8 @@ def main_menu():
 
     pygame.init()
 
-    WIDTH = 600
-    HEIGHT = 600
+    WIDTH = 720
+    HEIGHT = 720
 
     # Create Game Window
     screen = pygame.display.set_mode((WIDTH,HEIGHT))
@@ -28,15 +28,15 @@ def main_menu():
     title = pygame.image.load('images/title.png').convert_alpha()
     title =  pygame.transform.scale(title, (400, 40))
 
-    rect_surface = pygame.Surface((500, 500), pygame.SRCALPHA)  
+    rect_surface = pygame.Surface((720, 720), pygame.SRCALPHA)  
     rect_color = (102, 102, 102, 150)
-    pygame.draw.rect(rect_surface, rect_color, pygame.Rect(0, 0, 500, 500), border_radius=10)
+    pygame.draw.rect(rect_surface, rect_color, pygame.Rect(0, 0, 620, 620), border_radius=10)
 
     oStart_Button = Button(screen, (WIDTH/2, HEIGHT/2), 'images/start.png', 'images/start_down.png')
     radioButtons = [ 
-        RadioButton(WIDTH//4-50, 400, 100, 60, 'images/easy.jpeg'),
-        RadioButton(WIDTH//2-50, 400, 100, 60, 'images/common.jpeg'),
-        RadioButton(WIDTH*3//4-50, 400, 100, 60, 'images/hard.jpeg')
+        RadioButton(WIDTH//4-60, 500, 120, 80, 'images/easy.jpeg'),
+        RadioButton(WIDTH//2-60, 500, 120, 80, 'images/common.jpeg'),
+        RadioButton(WIDTH*3//4-60, 500, 120, 80, 'images/hard.jpeg')
     ]
     for rb in radioButtons:
         rb.setRadioButtons(radioButtons)
@@ -73,7 +73,7 @@ def main_menu():
         screen.fill(0)
         screen.blit(background, background.get_rect())
         screen.blit(rect_surface, (50, 50))
-        screen.blit(title, (100,150))
+        screen.blit(title, (125,175))
         oStart_Button.draw()
         group.draw(screen)
 

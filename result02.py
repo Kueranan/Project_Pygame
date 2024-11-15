@@ -9,8 +9,8 @@ def result():
 
     pygame.init()
 
-    WIDTH = 600
-    HEIGHT = 600
+    WIDTH = 720
+    HEIGHT = 720
     
     screen = pygame.display.set_mode((WIDTH,HEIGHT))
     clock = pygame.time.Clock()
@@ -19,11 +19,11 @@ def result():
     background = pygame.image.load('images/night.jpeg').convert_alpha()
     background =  pygame.transform.scale(background, (WIDTH, HEIGHT))
     grade = pygame.image.load('images/A.jpeg').convert_alpha()
-    grade =  pygame.transform.scale(grade, (200, 200))
+    grade =  pygame.transform.scale(grade, (240, 240))
 
-    rect_surface = pygame.Surface((500, 500), pygame.SRCALPHA)  
+    rect_surface = pygame.Surface((720, 720), pygame.SRCALPHA)  
     rect_color = (102, 102, 102, 150)
-    pygame.draw.rect(rect_surface, rect_color, pygame.Rect(0, 0, 500, 500), border_radius=10)
+    pygame.draw.rect(rect_surface, rect_color, pygame.Rect(0, 0, 620, 620), border_radius=10)
     
 
     oRetry = Button(screen, (WIDTH//2, HEIGHT*6.5//10), 'images/retry.png', 'images/retry_down.png')
@@ -44,7 +44,7 @@ def result():
 
         screen.blit(background, background.get_rect())
         screen.blit(rect_surface, (50, 50))
-        screen.blit(grade, (WIDTH//2-100,125))
+        screen.blit(grade, (WIDTH//2-120,125))
         oRetry.draw()
         oExit.draw()
 
@@ -61,4 +61,3 @@ result()
 
 pygame.quit()
 sys.exit()
-
