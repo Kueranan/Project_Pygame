@@ -8,20 +8,25 @@ from easy_mode import *
 from normal_mode import *
 from hard_mode import *
 
+timestamp = 0
 
 def main_menu():
+    global timestamp
 
     pygame.init()
+    pygame.mixer.init()
+
+    if not pygame.mixer.music.get_busy():
+        pygame.mixer.music.load('massobeats - honey jam.mp3')
+        pygame.mixer.music.set_volume(0.3)
+        pygame.mixer.music.play(loops=-1, start=timestamp, fade_ms=2000) 
 
     WIDTH = 720
     HEIGHT = 720
 
-    # Create Game Window
     screen = pygame.display.set_mode((WIDTH,HEIGHT))
     clock = pygame.time.Clock()
-    font20 = pygame.font.SysFont(None, 20)
     pygame.display.set_caption('"A" Experience English I')
-
     
     background = pygame.image.load('images/university.jpeg').convert_alpha()
     background=  pygame.transform.scale(background, (WIDTH, HEIGHT))
@@ -40,13 +45,10 @@ def main_menu():
     ]
     for rb in radioButtons:
         rb.setRadioButtons(radioButtons)
-
     radioButtons[1].clicked = True
-
     group = pygame.sprite.Group(radioButtons)
 
 
-    # Game loop
     run = True
     while run:
 
@@ -55,11 +57,14 @@ def main_menu():
         event_list = pygame.event.get()
         for event in event_list:
             if event.type == pygame.QUIT:
+                pygame.mixer.music.fadeout(2000)
                 run = False
                
         group.update(event_list)   
 
         if oStart.is_clicked():
+            pygame.mixer.music.fadeout(2000)
+            timestamp = pygame.mixer.music.get_pos() / 1000
             if radioButtons[0].clicked:
                 print("Easy mode selected")
                 easy_mode()
@@ -70,6 +75,10 @@ def main_menu():
                 print("Hard mode selected")
                 hard_mode()
 
+
+        if not pygame.mixer.music.get_busy():
+            pygame.mixer.music.play(loops=-1, start=timestamp, fade_ms=2000)
+
         screen.fill(0)
         screen.blit(background, background.get_rect())
         screen.blit(rect_surface, (50, 50))
@@ -78,12 +87,14 @@ def main_menu():
         group.draw(screen)
 
 
-        # Update the screen
         pygame.display.flip()
+
+    pygame.mixer.music.fadeout(2000)
 
         
 main_menu()
 
+pygame.mixer.music.stop()
 pygame.quit()
 sys.exit()
 
