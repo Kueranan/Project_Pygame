@@ -18,16 +18,15 @@ def result():
 
     background = pygame.image.load('images/night.jpeg').convert_alpha()
     background =  pygame.transform.scale(background, (WIDTH, HEIGHT))
-    grade = pygame.image.load('images/A.jpeg').convert_alpha()
-    grade =  pygame.transform.scale(grade, (240, 240))
-
     rect_surface = pygame.Surface((720, 720), pygame.SRCALPHA)  
     rect_color = (102, 102, 102, 150)
     pygame.draw.rect(rect_surface, rect_color, pygame.Rect(0, 0, 620, 620), border_radius=10)
-    
+    grade = pygame.image.load('images/A.jpeg').convert_alpha()
+    grade =  pygame.transform.scale(grade, (240, 240))
 
-    oRetry = Button(screen, (WIDTH//2, HEIGHT*6.5//10), 'images/retry.png', 'images/retry_down.png')
-    oExit = Button(screen, (WIDTH//2, HEIGHT*8//10), 'images/exit.png', 'images/exit_down.png')
+    choice_size = (250, 80)
+    oRetry = Button(screen, (WIDTH//2, HEIGHT*6.5//10), 'images/retry.png', 'images/retry_down.png', size = choice_size)
+    oExit = Button(screen, (WIDTH//2, HEIGHT*8//10), 'images/exit.png', 'images/exit_down.png', size = choice_size)
 
     # Game loop
     run = True
@@ -61,3 +60,4 @@ result()
 
 pygame.quit()
 sys.exit()
+
