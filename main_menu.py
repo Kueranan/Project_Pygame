@@ -26,14 +26,14 @@ def main_menu():
 
     screen = pygame.display.set_mode((WIDTH,HEIGHT))
     clock = pygame.time.Clock()
-    pygame.display.set_caption('"A" Experience English I')
+    pygame.display.set_caption('Main menu')
     
     background = pygame.image.load('images/university.jpeg').convert_alpha()
     background=  pygame.transform.scale(background, (WIDTH, HEIGHT))
     rect_surface = pygame.Surface((720, 720), pygame.SRCALPHA)  
     rect_color = (102, 102, 102, 150)
     pygame.draw.rect(rect_surface, rect_color, pygame.Rect(0, 0, 620, 620), border_radius=10)
-    title = pygame.image.load('images/title.png').convert_alpha()
+    title = pygame.image.load('images/new_title.png').convert_alpha()
     title =  pygame.transform.scale(title, (450, 50))
 
     choice_size = (300, 175)
