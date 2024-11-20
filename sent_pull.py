@@ -17,21 +17,21 @@ def word_label():
 
 
 
-def generate_question(word_for_random, Data_all):
+def generate_question(word_for_random, Data_all):   #Data all form sent.py
     while True:
         choose_letter_index = random.randint(1, 26)
 
         if choose_letter_index in word_for_random:
             letter = word_for_random[choose_letter_index]  # e.g., 'c'
-            start, end = Range_word_a_z.get_range(letter)
+            start, end = Range_word_a_z.get_range(letter)   # A and B random for Range_word_a_z 
             
-            choose_word = random.randint(start, end - 1)
+            choose_word = random.randint(start, end - 1)  
             
-            if letter in Data_all:
-                words_for_letter = Data_all[letter] 
+            if letter in Data_all:      # check if a in {'a': {0 : ('word', 'tran')}
+                words_for_letter = Data_all[letter]  
     
-                if choose_word in words_for_letter:
-                    question = words_for_letter[choose_word][0]
+                if choose_word in words_for_letter: # random range for R_wo_a_z.py
+                    question = words_for_letter[choose_word][0] # choose data from random
                     answer = words_for_letter[choose_word][1]
                     return question, answer
                 else:
@@ -57,10 +57,10 @@ class Call_Qusetion_Answer():
    
    
 def Qusetion_Answer():
-    word_for_random = word_label()
-    Data_all = Database.sent()
-    Q_A = Call_Qusetion_Answer(Data_all, word_for_random)
-    return Q_A.Call_Q_A()
+    word_for_random = word_label()   # {1: 'a', 2: 'b', ..., 26: 'z'}
+    Data_all = Database.sent()   # data form sent
+    Q_A = Call_Qusetion_Answer(Data_all, word_for_random)  
+    return Q_A.Call_Q_A()  # return question, ans answer
 
    
 #def Answer():
