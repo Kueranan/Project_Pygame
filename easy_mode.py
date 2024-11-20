@@ -138,7 +138,7 @@ def easy_mode():
             list_choice += [check_Q[i][0], check_c[i]]
             ran_list = random.sample(list_choice, k=2)
             time.sleep(0.3)
-            result(rew.grade,rew.score)
+            run = result(rew.grade,rew.score)
             rew.reset_reward()
             timmer.time_reset()
             continue

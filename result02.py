@@ -45,8 +45,8 @@ def result(c_grade,score):
     oExit = Button(screen, (WIDTH//2, HEIGHT*8//10), 'images/exit.png', 'images/exit_down.png', size = choice_size)
 
     # Game loop
-    run = True
-    while run:
+    runing = True
+    while runing:
 
         clock.tick(60)
 
@@ -65,9 +65,10 @@ def result(c_grade,score):
 
         if oRetry.is_clicked():
             print("Retry Button Clicked!")
+            return True
         if oExit.is_clicked():
             print("Exit Button Clicked!")
             time.sleep(0.3)
-            run = False
+            return False
         # Update the screen
         pygame.display.flip()
