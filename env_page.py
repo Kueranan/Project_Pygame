@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-import time
+import random
 
 class RadioButton(pygame.sprite.Sprite):
     def __init__(self, x, y, w, h, image_path,):

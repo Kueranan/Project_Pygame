@@ -15,6 +15,8 @@ from env_page import *
 def hard_mode():
     i = 0
     num = 1
+    bg_i = 0
+    bg = ["sun", "night", "night in city."]
 
     screen = pygame.display.get_surface()
     clock = pygame.time.Clock()
@@ -23,8 +25,8 @@ def hard_mode():
     WIDTH = 720
     HEIGHT = 720
 
-    background = pygame.image.load('images/sun.jpeg').convert_alpha()
-    background=  pygame.transform.scale(background, (WIDTH, HEIGHT*2//3))
+    # background = pygame.image.load('images/sun.jpeg').convert_alpha()
+    # background=  pygame.transform.scale(background, (WIDTH, HEIGHT*2//3))
 
     # question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text="Insert Question Here")
 
@@ -39,7 +41,7 @@ def hard_mode():
     timmer = c_timer(screen,"hard")
     # timmer.time_end(5)
 
-    Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=7, choice=21)
+    Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=20, choice=60)
     check_Q, check_c = Q_A_check.check_qusetion()
 
     list_choice = [check_Q[i][0], check_c[i], check_c[i+1], check_c[i+2]]
@@ -57,14 +59,17 @@ def hard_mode():
                 run = False
 
         screen.fill((154, 103, 82))
-
+        if bg_i > 2:
+            bg_i = 0
+        background = pygame.image.load(f'images/{bg[bg_i]}.jpeg').convert_alpha()
+        background=  pygame.transform.scale(background, (WIDTH, HEIGHT*2//3))
         screen.blit(background, background.get_rect())
 
         if len(check_Q[i][1]) <= 40:
             question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text=f"{check_Q[i][1]}")
             question_box.draw()
         else:
-            Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=7, choice=21)
+            Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=20, choice=60)
             check_Q, check_c = Q_A_check.check_qusetion()
             
 
@@ -85,7 +90,7 @@ def hard_mode():
             num = 1
             anime.walking(num)
         anime.enemy(rew.grade)
-        if 0.5 <= rew.grade <= 4 and i <= 5 and timmer.timer_ingame >= 0:
+        if 0.5 <= rew.grade <= 4 and i <= 18 and timmer.timer_ingame >= 0:
             if oChoice_1.is_clicked():
                 if ran_list[0] == check_Q[i][0]:
                     print("Choice 1 Button Clicked!")
@@ -96,6 +101,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 elif ran_list[0] != check_Q[i][0]:
                     print("Choice 1 Button Clicked!")
@@ -106,6 +112,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 else:
                     pass
@@ -119,6 +126,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 elif ran_list[1] != check_Q[i][0]:
                     print("Choice 2 Button Clicked!")
@@ -129,6 +137,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 else:
                     pass
@@ -142,6 +151,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 elif ran_list[2] != check_Q[i][0]:
                     print("Choice 3 Button Clicked!")
@@ -152,6 +162,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 else:
                     pass
@@ -165,6 +176,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 elif ran_list[3] != check_Q[i][0]:
                     print("Choice 4 Button Clicked!")
@@ -175,6 +187,7 @@ def hard_mode():
                     list_choice += [check_Q[i][0], check_c[i*3], check_c[i*3+1], check_c[i*3+2]]
                     ran_list = random.sample(list_choice, k = 4)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 else:
                     pass
@@ -190,6 +203,7 @@ def hard_mode():
             run = result(rew.grade,rew.score)
             rew.reset_reward()
             timmer.time_reset()
+            bg_i += 1
             continue
 
         # Update the screen

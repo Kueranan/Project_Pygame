@@ -92,8 +92,9 @@ def main_menu():
 
     pygame.mixer.music.fadeout(2000)
 
-        
-main_menu()
+
+if __name__ == "__main__":     
+    main_menu()
 
 pygame.mixer.music.stop()
 pygame.quit()

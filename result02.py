@@ -3,7 +3,8 @@ from pygame.locals import *
 import sys
 import time
 
-from button import *
+# from button import *
+from env_page import *
 
 
 def result(c_grade,score):
@@ -27,7 +28,7 @@ def result(c_grade,score):
     elif c_grade == 1.5:
         grade = pygame.image.load('images/D.jpeg').convert_alpha()
     elif c_grade == 2.0:
-        grade = pygame.image.load('images/D.jpeg').convert_alpha()
+        grade = pygame.image.load('images/D+.png').convert_alpha()
     elif c_grade == 2.5:
         grade = pygame.image.load('images/c.jpeg').convert_alpha()
     elif c_grade == 3.0:

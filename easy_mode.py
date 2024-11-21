@@ -16,6 +16,8 @@ from env_page import *
 def easy_mode():
     i = 0
     num = 1
+    bg_i = 0
+    bg = ["sun", "night", "night in city."]
     screen = pygame.display.get_surface()
     clock = pygame.time.Clock()
     pygame.display.set_caption('Easy mode')
@@ -39,14 +41,13 @@ def easy_mode():
     #pull Quation and Answer
     Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=20, choice=20)
     check_Q, check_c = Q_A_check.check_qusetion()
-    print(check_Q)
 
     list_choice = [check_Q[i][0], check_c[i]]
     ran_list = random.sample(list_choice, k=2)
 
     #animetion
     anime = animetion(screen)
-
+    
     # Game loop
     run = True
     while run:
@@ -58,8 +59,12 @@ def easy_mode():
                 run = False
 
         screen.fill((154, 103, 82))
-
+        if bg_i > 2:
+            bg_i = 0
+        background = pygame.image.load(f'images/{bg[bg_i]}.jpeg').convert_alpha()
+        background=  pygame.transform.scale(background, (WIDTH, HEIGHT*2//3))
         screen.blit(background, background.get_rect())
+
         if len(check_Q[i][1]) <= 40:
             question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text=f"{check_Q[i][1]}")
             question_box.draw()
@@ -71,7 +76,6 @@ def easy_mode():
             list_choice = [check_Q[i][0], check_c[i]]
             ran_list = random.sample(list_choice, k=2)
             question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text=f"{check_Q[i][1]}")
-            print(check_Q)
             question_box.draw()
         
         oChoice_1.draw(f"{ran_list[0]}")
@@ -94,6 +98,7 @@ def easy_mode():
                     list_choice += [check_Q[i][0], check_c[i]]
                     ran_list = random.sample(list_choice, k=2)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 elif ran_list[0] != check_Q[i][0]:
                     print("Choice 1 Clicked!")
@@ -104,6 +109,7 @@ def easy_mode():
                     list_choice += [check_Q[i][0], check_c[i]]
                     ran_list = random.sample(list_choice, k=2)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 else:
                     pass
@@ -117,6 +123,7 @@ def easy_mode():
                     list_choice += [check_Q[i][0], check_c[i]]
                     ran_list = random.sample(list_choice, k=2)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 elif ran_list[1] != check_Q[i][0]:
                     print("Choice 2 Clicked!")
@@ -127,6 +134,7 @@ def easy_mode():
                     list_choice += [check_Q[i][0], check_c[i]]
                     ran_list = random.sample(list_choice, k=2)
                     timmer.time_reset()
+                    bg_i += 1
                     continue
                 else:
                     pass
@@ -141,6 +149,7 @@ def easy_mode():
             run = result(rew.grade,rew.score)
             rew.reset_reward()
             timmer.time_reset()
+            bg_i += 1
             continue
         # Update the screen
         timmer.draw_time()
