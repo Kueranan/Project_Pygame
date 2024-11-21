@@ -41,7 +41,6 @@ def easy_mode():
     #pull Quation and Answer
     Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=20, choice=20)
     check_Q, check_c = Q_A_check.check_qusetion()
-    print(check_Q)
 
     list_choice = [check_Q[i][0], check_c[i]]
     ran_list = random.sample(list_choice, k=2)
@@ -77,7 +76,6 @@ def easy_mode():
             list_choice = [check_Q[i][0], check_c[i]]
             ran_list = random.sample(list_choice, k=2)
             question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text=f"{check_Q[i][1]}")
-            print(check_Q)
             question_box.draw()
         
         oChoice_1.draw(f"{ran_list[0]}")
