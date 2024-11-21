@@ -40,7 +40,7 @@ def normal_mode():
     rew = c_reward()
     timmer = c_timer(screen,"normol")
 
-    Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=7, choice=21)
+    Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=20, choice=60)
     check_Q, check_c = Q_A_check.check_qusetion()
 
     list_choice = [check_Q[i][0], check_c[i], check_c[i+1], check_c[i+2]]
@@ -68,7 +68,7 @@ def normal_mode():
             question_box = TextBox(screen, width=400, height=60, position=((WIDTH - 400) // 2, HEIGHT // 6), text=f"{check_Q[i][1]}")
             question_box.draw()
         else:
-            Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=7, choice=21)
+            Q_A_check = qusetion_eqution_answer(Need_total_Qusetion=20, choice=60)
             check_Q, check_c = Q_A_check.check_qusetion()
             
 
@@ -89,7 +89,7 @@ def normal_mode():
             anime.walking(num)
         anime.enemy(rew.grade)
 
-        if 0.5 <= rew.grade <= 4 and rew.score >= 0 and i <= 5 and timmer.timer_ingame >= 0:
+        if 0.5 <= rew.grade <= 4 and rew.score >= 0 and i <= 18 and timmer.timer_ingame >= 0:
             if oChoice_1.is_clicked():
                 if ran_list[0] == check_Q[i][0]:
                     print("Choice 1 Button Clicked!")
