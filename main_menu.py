@@ -8,7 +8,6 @@ from env_page import *
 from easy_mode import *
 from normal_mode import *
 from hard_mode import *
-from result02 import *
 
 timestamp = 0
 
